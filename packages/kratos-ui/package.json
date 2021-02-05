@@ -1,0 +1,50 @@
+{
+  "name": "kratos-ui",
+  "version": "0.0.1",
+  "description": "Kratos UI",
+  "private": true,
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "scripts": {
+    "start": "egg-scripts start --title=kratos-ui --framework=@midwayjs/web --env=prod",
+    "stop": "egg-scripts stop --title=kratos-ui",
+    "start_build": "npm run build && cross-env NODE_ENV=development midway-bin dev",
+    "dev": "cross-env ets && cross-env NODE_ENV=local midway-bin dev --ts",
+    "build": "midway-bin build -c"
+  },
+  "midway-integration": {
+    "lifecycle": {
+      "before:package:cleanup": "npm run build"
+    }
+  },
+  "midway-bin-clean": [
+    ".vscode/.tsbuildinfo",
+    "dist"
+  ],
+  "egg": {
+    "framework": "@midwayjs/web"
+  },
+  "dependencies": {
+    "@midwayjs/web": "2.7.3",
+    "@ory/kratos-client": "0.5.4-alpha.1",
+    "egg": "2.29.1",
+    "egg-scripts": "2.13.0",
+    "egg-view-nunjucks": "2.3.0",
+    "egg-web": "0.3.3",
+    "jsonwebtoken": "8.4.0",
+    "vanilla.js": "0.2.3"
+  },
+  "devDependencies": {
+    "@midwayjs/cli": "1.2.39",
+    "@midwayjs/decorator": "2.7.0",
+    "@midwayjs/egg-ts-helper": "1.0.5",
+    "@types/jest": "26.0.15",
+    "@types/node": "14.14.25",
+    "cross-env": "6.0.3",
+    "jest": "26.6.3",
+    "mwts": "1.1.2",
+    "ts-jest": "26.4.4",
+    "typescript": "4.1.3"
+  }
+}
