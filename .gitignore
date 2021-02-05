@@ -1,0 +1,13 @@
+node_modules/
+logs/
+run/
+
+.DS_Store
+
+dist/
+.serverless/
+
+.umi/
+.umi-production/
+
+config.local.ts
