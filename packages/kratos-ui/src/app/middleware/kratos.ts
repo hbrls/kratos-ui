@@ -18,7 +18,6 @@ export class KratosMiddleware {
 
       try {
         const { data: session } = await kratos.whoami(ctx.get('Cookie'), ctx.get('Authorization'));
-        // const session = { id: 'sid-mock', active: true, identity: { id: 'uid-mock', traits: { email: 'shuaizhexu@gmail.com' } } };
         const { id: sid, identity /* active, authenticated_at, issued_at, expires_at, */ } = session;
         const { id: uid, /* traits, schema_id, schema_url, recovery_addresses, verifiable_addresses, */ } = identity;
         // ctx.logger.info(uid, sid, active, traits);

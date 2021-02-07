@@ -1,40 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="icon" type="image/png" href="/kratos-ui/rsrc/img/favicon.png" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
-    <meta charset="utf-8" />
-    <title>Kratos UI - Dashboard</title>
-    <link rel="stylesheet" href="/kratos-ui/rsrc/css/index.css" />
-    <link rel="stylesheet" href="/kratos-ui/rsrc/css/typography.css" />
-    <link rel="stylesheet" href="/kratos-ui/rsrc/css/form.css" />
-    <link rel="stylesheet" href="/kratos-ui/rsrc/css/auth.css" />
-</head>
-<body>
+{% extends "layout.html" %}
 
-  <div class="content">
-    <div class="header">
-      <a href="/kratos-ui/dashboard">Dashboard</a>
-      <div class="icon-actions">
-        <div class="settings"><a href="/kratos-ui/settings">Settings</a></div>
-        <div class="logout"><a href="/kratos-ui/logout">Logout</a></div>
-      </div>
-    </div>
-    <div class="container">
-        <h2 class="greeting">Welcome back, <span class="user-identifier">{{ identity.traits.email }}</span>!</h2>
+{% block title %}Dashboard{% endblock %}
 
-        <h3>This example app is secure by default!</h3>
-
-        <p>Hello, nice to have you! You signed up with this data:</p>
-        <pre><code>{{ traits }}</code></pre>
-
-        <p>Requests to your application contain a ORY Kratos Session Cookie:</p>
-        <pre><code>>> print headers</code></pre>
-
-        <p>which a ExpressJS middleware checks for validity and payload. The decoded ORY Kratos Session payload is as follows:</p>
-        <pre><code>>> print session</code></pre>
+{%block body %}
+<div class="content">
+  <div class="header">
+    <a href="/kratos-ui/dashboard">Dashboard</a>
+    <div class="icon-actions">
+      <div class="settings"><a href="/kratos-ui/settings">Settings</a></div>
+      <div class="logout"><a href="/kratos-ui/logout">Logout</a></div>
     </div>
   </div>
+  <div class="container">
+      <h2 class="greeting">Welcome back, <span class="user-identifier">{{ identity.traits.email }}</span>!</h2>
 
-</body>
-</html>
+      <h3>This example app is secure by default!</h3>
+
+      <p>Hello, nice to have you! You signed up with this data:</p>
+      <pre><code>{{ traits }}</code></pre>
+
+      <p>Requests to your application contain a ORY Kratos Session Cookie:</p>
+      <pre><code>>> print headers</code></pre>
+
+      <p>which a ExpressJS middleware checks for validity and payload. The decoded ORY Kratos Session payload is as follows:</p>
+      <pre><code>>> print session</code></pre>
+  </div>
+</div>
+{% endblock %}

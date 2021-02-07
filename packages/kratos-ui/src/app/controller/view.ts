@@ -1,5 +1,6 @@
-import { Provide, Inject, Controller, Get } from '@midwayjs/decorator';
+import { Provide, Inject, Config, Controller, Get, Query } from '@midwayjs/decorator';
 import { Context } from 'egg';
+import { Configuration, PublicApi } from '@ory/kratos-client';
 
 
 @Provide()
@@ -8,6 +9,9 @@ export class ViewController {
 
   @Inject()
   ctx: Context;
+
+  @Config('kratos')
+  config;
 
   @Get('/home')
   async home() {
@@ -22,5 +26,19 @@ export class ViewController {
   @Get('/dashboard', { middleware: [ 'kratosMiddleware' ] })
   async dashboard() {
     await this.ctx.render('dashboard.html', { identity: this.ctx.local.identity, traits: JSON.stringify(this.ctx.local.identity.traits, null, 2) });
+  }
+
+  @Get('/login')
+  async login(@Query('flow') flowId: string) {
+    if (!flowId) { // if (!flow || !isString(flow))
+      const browser = this.config.browser;
+      return this.ctx.redirect(`${browser}/self-service/login/browser`);
+    }
+
+    const api = this.config.public;
+    const kratos = new PublicApi(new Configuration({ basePath: api }));
+    const { data: flow } = await kratos.getSelfServiceLoginFlow(flowId);
+
+    await this.ctx.render('login.html', { form: flow.methods.password.config });
   }
 }
