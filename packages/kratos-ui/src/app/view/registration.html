@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}Registration{% endblock %}
+
+{% block body %}
+<div class="auth">
+  <div class="auth">
+    <div class="container">
+      {% include "partials/icon-logo.html" %}
+      <h5 class="subheading">Welcome to SecureApp!<br />Use the form below to sign up:</h5>
+
+      <div class="messages global"></div>
+
+      <div id="registration-password">
+        <form action="{{ form.action }}" method="{{ form.method }}">
+          <div class="messages "></div>
+          {% for field in form.fields %}
+          {% if field.type === "hidden" %}
+          <input type="hidden" name="{{ field.name }}" value="{{ field.value }}">
+          {% elif field.type === "password" %}
+          <fieldset>
+            <label>
+              <input type="password" name="{{ field.name }}" value="" placeholder="{{ __(field.name) }}">
+              <span>{{ __(field.name) }}</span>
+            </label>
+            <div class="messages"></div>
+          </fieldset>
+          {% else %}
+          <fieldset>
+            <label>
+              <input type="text" name="{{ field.name }}" value="{{ field.value }}" placeholder="{{ __(field.name) }}" autocomplete="off">
+              <span>{{ __(field.name) }}</span>
+            </label>
+            <div class="messages"></div>
+          </fieldset>
+          {% endif %}
+        {% endfor %}
+
+        <button type="submit">Sign up</button>
+      </form>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="alternative-actions">
+      <a href="/kratos-ui/login">Already have an account? Log in instead</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

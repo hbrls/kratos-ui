@@ -1,5 +1,8 @@
 {
   "email": "E-Mail",
   "identifier": "E-Mail",
-  "password": "Password"
+  "password": "Password",
+  "traits.email": "E-Mail",
+  "traits.name.first": "First Name",
+  "traits.name.last": "Last Name"
 }

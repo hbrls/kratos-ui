@@ -1,6 +1,7 @@
 import { Provide, Inject, Config, Controller, Get, Query } from '@midwayjs/decorator';
 import { Context } from 'egg';
 import { Configuration, PublicApi } from '@ory/kratos-client';
+import { KratosService } from '../service/kratos';
 
 
 @Provide()
@@ -12,6 +13,9 @@ export class ViewController {
 
   @Config('kratos')
   config;
+
+  @Inject()
+  kratosService: KratosService;
 
   @Get('/home')
   async home() {
@@ -40,5 +44,20 @@ export class ViewController {
     const { data: flow } = await kratos.getSelfServiceLoginFlow(flowId);
 
     await this.ctx.render('login.html', { form: flow.methods.password.config });
+  }
+
+  @Get('/registration')
+  async registration(@Query('flow') flowId: string) {
+    if (!flowId) { // if (!flow || !isString(flow))
+      const browser = this.config.browser;
+      return this.ctx.redirect(`${browser}/self-service/registration/browser`);
+    }
+
+    const api = this.config.public;
+    const kratos = new PublicApi(new Configuration({ basePath: api }));
+    const { data: flow } = await kratos.getSelfServiceRegistrationFlow(flowId);
+
+    this.kratosService.sortFields(flow.methods.password.config);
+    await this.ctx.render('registration.html', { form: flow.methods.password.config });
   }
 }
