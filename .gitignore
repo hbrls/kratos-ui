@@ -11,4 +11,5 @@ dist/
 .umi-production/
 
 config.local.ts
+env
 application.properties

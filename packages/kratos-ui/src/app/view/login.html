@@ -2,6 +2,10 @@
 
 {% block title %}Login{% endblock %}
 
+{% block css %}
+{{ helper.rsrc("dist", "login-r3p1ac3ha5h.css") | safe }}
+{% endblock %}
+
 {% block body %}
 <div class="auth">
   <div class="container">
@@ -48,4 +52,8 @@
     </div>
   </div>
 </div>
+{% endblock %}
+
+{% block js %}
+{{ helper.rsrc("dist", "login-r3p1ac3ha5h.js") | safe }}
 {% endblock %}

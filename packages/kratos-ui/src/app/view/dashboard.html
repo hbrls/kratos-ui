@@ -2,6 +2,10 @@
 
 {% block title %}Dashboard{% endblock %}
 
+{% block css %}
+{{ helper.rsrc("dist", "dashboard-r3p1ac3ha5h.css") | safe }}
+{% endblock %}
+
 {%block body %}
 <div class="content">
   <div class="header">
@@ -26,4 +30,8 @@
       <pre><code>>> print session</code></pre>
   </div>
 </div>
+{% endblock %}
+
+{% block js %}
+{{ helper.rsrc("dist", "dashboard-r3p1ac3ha5h.js") | safe }}
 {% endblock %}

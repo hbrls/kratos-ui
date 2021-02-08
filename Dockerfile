@@ -7,6 +7,9 @@ RUN mkdir -p /var/src
 
 COPY ./packages /var/src
 
+RUN cd /var/src/kratos-ui-rsrc && npm install --production --no-optional --no-package-lock && \
+    npm run build
+
 RUN cd /var/src/kratos-ui && npm install --no-optional --no-package-lock && \
     npm run build
 

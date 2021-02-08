@@ -1,0 +1,54 @@
+{
+  "parser": "@babel/eslint-parser",
+  "extends": "airbnb",
+
+  "env": {
+    "browser": true
+  },
+
+  "globals": {
+    "$": true,
+    "head": true
+  },
+
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.config.development.js"
+      }
+    }
+  },
+
+  "rules": {
+    // ** do it right
+    "func-names": 0,
+    "indent": 0,
+    "max-len": 0,
+    "no-console": 0,
+    "no-else-return": 0,
+    "no-lonely-if": 0,
+    "no-multiple-empty-lines": 0,
+    "no-param-reassign": 0,
+    "no-underscore-dangle": 0,
+    "object-curly-newline": 0,
+    "prefer-arrow-callback": 0,
+    "prefer-const": 0,
+    "react/jsx-indent": 0,
+    "react/require-default-props": 0,
+
+    // ** do it right
+    "react/prop-types": [2, { "ignore": ["children", "dispatch", "history", "params", "location", "query", "router", "dataSource", "form", "submit", "loading", "className", "id", "key", "label", "title", "tags", "attrs", "attributes"] }],
+
+    // FIXME:
+    "generator-star-spacing": 0,
+
+    // FIXME:
+    "arrow-parens": 0,
+    "prefer-promise-reject-errors": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/control-has-associated-label": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "react/jsx-props-no-spreading": 0
+  }
+}

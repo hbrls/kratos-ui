@@ -31,7 +31,7 @@
     "egg": "2.29.1",
     "egg-scripts": "2.13.0",
     "egg-view-nunjucks": "2.3.0",
-    "egg-web": "0.3.3",
+    "egg-web": "0.4.0",
     "jsonwebtoken": "8.4.0",
     "vanilla.js": "0.2.3"
   },

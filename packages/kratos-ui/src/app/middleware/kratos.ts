@@ -14,7 +14,7 @@ export class KratosMiddleware {
       const api = this.config.public;
 
       const kratos = new PublicApi(new Configuration({ basePath: api }));
-      // ctx.logger.info(kratos);
+      // ctx.logger.debug(kratos);
 
       try {
         const { data: session } = await kratos.whoami(ctx.get('Cookie'), ctx.get('Authorization'));
